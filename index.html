@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knight &amp; Day Chess Academy, Spark the curiosity, sharpen the mind</title>
+  <meta name="description" content="A youth chess academy with two paths: Spark sessions that get new kids excited about chess, and Sharpen sessions that turn keen players into strong ones. Book a free trial." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --green:#739552;        /* chess.com board green */
+      --green-deep:#4f6b38;
+      --cream:#ebecd0;        /* chess.com light square */
+      --ink:#23301a;
+      --ink-soft:#4a553f;
+      --white:#ffffff;
+      --gold:#e3a008;
+      --radius:18px;
+      --shadow:0 12px 30px rgba(35,48,26,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Inter",system-ui,sans-serif;
+      color:var(--ink);
+      background:var(--white);
+      line-height:1.6;
+    }
+    h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.1;color:var(--ink)}
+    a{color:var(--green-deep)}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+    .btn{
+      display:inline-block;font-weight:600;text-decoration:none;border-radius:999px;
+      padding:14px 26px;transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-primary{background:var(--green);color:var(--white);box-shadow:var(--shadow)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-ghost{border:2px solid var(--green);color:var(--green-deep);padding:12px 24px}
+    .btn-ghost:hover{background:var(--green);color:#fff}
+
+    /* ---------- Header / nav ---------- */
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid #e7e7d8}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 24px;max-width:1120px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:10px;font-family:"Fraunces";font-weight:700;font-size:1.15rem;color:var(--ink);text-decoration:none}
+    .brand .mark{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--green);color:#fff;font-size:1.25rem}
+    .nav-links{display:flex;align-items:center;gap:26px}
+    .nav-links a{text-decoration:none;color:var(--ink-soft);font-weight:500}
+    .nav-links a:hover{color:var(--green-deep)}
+    .nav-links .btn{color:#fff}
+    @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+    /* ---------- Hero ---------- */
+    .hero{
+      background:
+        linear-gradient(rgba(79,107,56,.86),rgba(79,107,56,.92)),
+        repeating-conic-gradient(var(--green) 0% 25%, var(--green-deep) 0% 50%) 0/64px 64px;
+      color:#fff;text-align:center;padding:84px 24px 92px;
+    }
+    .hero h1{color:#fff;font-size:clamp(2.1rem,5vw,3.6rem);font-weight:700;margin-bottom:18px}
+    .hero p{max-width:620px;margin:0 auto 30px;font-size:1.18rem;color:#f3f6ea}
+    .hero .btn-ghost{border-color:#fff;color:#fff}
+    .hero .btn-ghost:hover{background:#fff;color:var(--green-deep)}
+    .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .eyebrow{display:inline-block;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;font-weight:600;color:var(--cream);margin-bottom:16px}
+
+    /* ---------- Sections ---------- */
+    section{padding:72px 0}
+    .section-head{text-align:center;max-width:640px;margin:0 auto 46px}
+    .section-head h2{font-size:clamp(1.7rem,3.5vw,2.5rem);margin-bottom:12px}
+    .section-head p{color:var(--ink-soft);font-size:1.08rem}
+
+    /* program cards */
+    .programs{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    @media(max-width:760px){.programs{grid-template-columns:1fr}}
+    .card{background:var(--cream);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);border:1px solid #dfe0c6}
+    .card .tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:16px}
+    .card.spark .tag{background:#fff4d6;color:#9a6b00}
+    .card.sharpen .tag{background:#dde7cd;color:var(--green-deep)}
+    .card h3{font-size:1.6rem;margin-bottom:6px}
+    .card .who{font-weight:600;color:var(--green-deep);margin-bottom:14px}
+    .card ul{list-style:none;margin:0 0 22px}
+    .card li{padding-left:26px;position:relative;margin-bottom:9px;color:var(--ink-soft)}
+    .card li::before{content:"\265F";position:absolute;left:0;color:var(--green)}
+
+    /* benefits */
+    .benefits{background:#f7f8ee}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    @media(max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.grid4{grid-template-columns:1fr}}
+    .benefit{background:#fff;border-radius:14px;padding:26px;text-align:center;border:1px solid #ececdd}
+    .benefit .ico{font-size:2rem;margin-bottom:10px}
+    .benefit h3{font-size:1.15rem;margin-bottom:8px;font-family:"Inter";font-weight:600;color:var(--ink)}
+    .benefit p{font-size:.95rem;color:var(--ink-soft)}
+
+    /* steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:step}
+    @media(max-width:760px){.steps{grid-template-columns:1fr}}
+    .step{position:relative;padding:28px;border-radius:14px;background:var(--cream);border:1px solid #dfe0c6}
+    .step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--green);color:#fff;font-family:"Fraunces";font-weight:700;font-size:1.3rem;margin-bottom:14px}
+    .step h3{font-size:1.2rem;font-family:"Inter";font-weight:600;margin-bottom:6px}
+    .step p{color:var(--ink-soft);font-size:.97rem}
+
+    /* quote */
+    .quote{background:var(--green-deep);color:#fff;text-align:center}
+    .quote blockquote{max-width:720px;margin:0 auto;font-family:"Fraunces";font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:500;line-height:1.35}
+    .quote cite{display:block;margin-top:18px;font-family:"Inter";font-style:normal;font-size:.95rem;color:var(--cream)}
+    .placeholder{font-size:.8rem;color:#cdd9bd;margin-top:10px;letter-spacing:.04em}
+
+    /* final cta */
+    .final{text-align:center}
+    .final .panel{background:var(--cream);border-radius:24px;padding:56px 30px;box-shadow:var(--shadow);border:1px solid #dfe0c6}
+    .final h2{font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:12px}
+    .final p{color:var(--ink-soft);max-width:520px;margin:0 auto 26px;font-size:1.08rem}
+
+    /* footer */
+    footer{background:var(--ink);color:#cfd6c4;padding:54px 0 30px;font-size:.95rem}
+    .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px}
+    @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+    footer h4{color:#fff;font-family:"Inter";font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+    footer a{color:#cfd6c4;text-decoration:none;display:block;margin-bottom:9px}
+    footer a:hover{color:#fff}
+    .foot-brand{font-family:"Fraunces";font-weight:700;font-size:1.2rem;color:#fff;margin-bottom:10px}
+    .social{display:flex;gap:12px;margin-top:16px}
+    .social a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#36452a;margin:0;transition:background .15s ease,transform .15s ease}
+    .social a:hover{background:var(--green);transform:translateY(-2px)}
+    .social svg{width:20px;height:20px;fill:#fff}
+    .foot-bottom{border-top:1px solid #36452a;margin-top:36px;padding-top:20px;text-align:center;color:#8f9a7e;font-size:.85rem}
+    .draft-note{background:var(--gold);color:#3a2a00;text-align:center;font-size:.85rem;font-weight:600;padding:8px 16px}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top"><span class="mark" aria-hidden="true">&#9822;</span> Knight &amp; Day Chess Academy</a>
+      <div class="nav-links">
+        <a href="#programs">Programs</a>
+        <a href="#why">Why Chess</a>
+        <a href="#how">How It Works</a>
+        <a class="btn btn-primary" href="#book">Book a Free Trial</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <span class="eyebrow">Youth Chess · Ages 5&ndash;21</span>
+        <h1 id="hero-title">Spark the curiosity.<br />Sharpen the mind.</h1>
+        <p>Every kid starts somewhere. We help brand new players fall in love with chess, and we help keen players become genuinely good at it.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#book">Book a Free Trial Session</a>
+          <a class="btn btn-ghost" href="#programs">See Our Two Programs</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" aria-labelledby="programs-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="programs-title">Two paths, one academy</h2>
+          <p>Whether your child has never touched a chess piece or already lives for the next tournament, there&rsquo;s a seat for them here.</p>
+        </div>
+        <div class="programs">
+          <article class="card spark">
+            <span class="tag">Spark &#128293;</span>
+            <h3>Spark Sessions</h3>
+            <p class="who">For kids brand new to chess</p>
+            <ul>
+              <li>A playful, pressure free first experience</li>
+              <li>Builds focus, patience, and confidence from day one</li>
+            </ul>
+            <a class="btn btn-ghost" href="#book">Try a Spark session</a>
+          </article>
+          <article class="card sharpen">
+            <span class="tag">Sharpen &#9817;</span>
+            <h3>Sharpen Sessions</h3>
+            <p class="who">For kids who want to get better</p>
+            <ul>
+              <li>Tactics, openings, and endgame training</li>
+              <li>Personalized coaching built on your child&rsquo;s real games</li>
+            </ul>
+            <a class="btn btn-ghost" href="#book">Join a Sharpen session</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="benefits" aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="why-title">What chess builds</h2>
+          <p>Chess isn&rsquo;t just a game. It&rsquo;s a workout for the skills that help kids in the classroom and in life.</p>
+        </div>
+        <div class="grid4">
+          <div class="benefit"><div class="ico" aria-hidden="true">&#127919;</div><h3>Focus</h3><p>Kids learn to slow down, look closely, and think before they act.</p></div>
+          <div class="benefit"><div class="ico" aria-hidden="true">&#129504;</div><h3>Pattern recognition</h3><p>Spotting patterns on the board sharpens the same skills used in reading and math.</p></div>
+          <div class="benefit"><div class="ico" aria-hidden="true">&#128302;</div><h3>Planning ahead</h3><p>Every move is a small lesson in thinking a few steps into the future.</p></div>
+          <div class="benefit"><div class="ico" aria-hidden="true">&#128065;</div><h3>Visualization</h3><p>Players learn to picture moves in their head before they happen.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="how-title">How it works</h2>
+          <p>Getting started is simple, and the first session is on us.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><h3>Book a free trial</h3><p>Pick a time online. No experience and no equipment needed, just show up curious.</p></div>
+          <div class="step"><h3>Find the right level</h3><p>We meet your child where they are and place them in Spark or Sharpen.</p></div>
+          <div class="step"><h3>Grow every week</h3><p>Small classes, real coaching, and steady progress your child can feel.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote" aria-label="Parent testimonial">
+      <div class="wrap">
+        <blockquote>&ldquo;My son went from never sitting still to asking if we can play one more game before bed.&rdquo;</blockquote>
+        <cite>,  Parent of a Spark student</cite>
+      </div>
+    </section>
+
+    <section id="book" class="final" aria-labelledby="book-title">
+      <div class="wrap">
+        <div class="panel">
+          <h2 id="book-title">Your child&rsquo;s first move starts here</h2>
+          <p>Book a free trial session today and see which path fits, Spark or Sharpen.</p>
+          <a class="btn btn-primary" href="#book">Book a Free Trial Session</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <div class="foot-brand">&#9822; Knight &amp; Day Chess Academy</div>
+        <p>Spark the curiosity. Sharpen the mind. A youth chess academy for every kind of player.</p>
+        <div class="social">
+          <a href="#" aria-label="Knight &amp; Day on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="#" aria-label="Knight &amp; Day on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.16-.74.36-1.06.68-.32.32-.52.63-.68 1.06-.13.32-.28.8-.32 1.7-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.16.43.36.74.68 1.06.32.32.63.52 1.06.68.32.13.8.28 1.7.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.16.74-.36 1.06-.68.32-.32.52-.63.68-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.86 2.86 0 0 0-.68-1.06 2.86 2.86 0 0 0-1.06-.68c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 0 12 16.94 4.94 4.94 0 0 0 12 7.06zm0 8.14A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm6.29-8.35a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
+          </a>
+          <a href="#" aria-label="Knight &amp; Day on TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.1v12.4a2.5 2.5 0 1 1-2.5-2.5c.26 0 .51.04.75.12v-3.2a5.7 5.7 0 0 0-.75-.05A5.62 5.62 0 1 0 15.56 15V8.9a7.34 7.34 0 0 0 4.3 1.38v-3.1a4.3 4.3 0 0 1-3.26-1.36z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#programs">Programs</a>
+        <a href="#why">Why Chess</a>
+        <a href="#how">How It Works</a>
+        <a href="#book">Book a Free Trial</a>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <a href="#">Hours: Mon&ndash;Sat</a>
+        <a href="#">hello@knightandday.example</a>
+        <a href="#">(000) 000&ndash;0000</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Knight &amp; Day Chess Academy · Student project for ENGL 317 · Not a real business</div>
+  </footer>
+</body>
+</html>
